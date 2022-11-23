@@ -1,0 +1,12 @@
+build:
+  JSAE1701:
+    image: okteto.dev/jsae1701:latest
+
+deploy:
+  - okteto build # build the image with the latest code
+  - kubectl apply -f manifests # create all the resources in kubernetes
+dev:
+  JSAE1701:
+    command: bash
+    sync:
+    - .:/hackernews
