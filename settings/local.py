@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from telnetlib import AUTHENTICATION
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ln8=s15hdiqi*g^hz(0jr5785ieg#ru$$btkr9_)hopyv(qo3p'
+SECRET_KEY = config('DEV_SECRET_KEY', default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'health_check',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,16 +83,34 @@ WSGI_APPLICATION = 'hackernews.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DEV_DATABASE = config("DEV_DATABASE", default='')
+DEV_USER = config("DEV_USER", default='')
+DEV_PASSWORD = config("DEV_PASSWORD", default='')
+DEV_HOST = config("DEV_HOST", default='')
+DEV_PORT = config("DEV_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jairoalonso',
-        'USER': 'jairoalonso',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    }
+        'NAME': DEV_DATABASE,
+        'USER': DEV_USER,
+        'PASSWORD': DEV_PASSWORD,
+        'HOST': DEV_HOST,
+        'PORT': DEV_PORT,
+        #'TEST': {
+        #    'NAME': TEST_DATABASE,
+        #},
+    },
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'jairoalonso',
+#        'USER': 'jairoalonso',
+#        'PASSWORD': '1234',
+#        'HOST': 'localhost',
+#        'PORT': 5432,
+#    }
+#}
 
 
 # Password validation
