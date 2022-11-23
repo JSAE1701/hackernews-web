@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: adsoftsito
+  name: jsae1701
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
