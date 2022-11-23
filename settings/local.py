@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('DEV_SECRET_KEY', default='')
+SECRET_KEY = config('DEV_SECRET_KEY', default='kaguya-simp')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,29 +88,29 @@ DEV_USER = config("DEV_USER", default='')
 DEV_PASSWORD = config("DEV_PASSWORD", default='')
 DEV_HOST = config("DEV_HOST", default='')
 DEV_PORT = config("DEV_PORT", default=5432)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DEV_DATABASE,
-        'USER': DEV_USER,
-        'PASSWORD': DEV_PASSWORD,
-        'HOST': DEV_HOST,
-        'PORT': DEV_PORT,
-        #'TEST': {
-        #    'NAME': TEST_DATABASE,
-        #},
-    },
-}
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'jairoalonso',
-#        'USER': 'jairoalonso',
-#        'PASSWORD': '1234',
-#        'HOST': 'localhost',
-#        'PORT': 5432,
-#    }
+#        'NAME': DEV_DATABASE,
+#        'USER': DEV_USER,
+#        'PASSWORD': DEV_PASSWORD,
+#        'HOST': DEV_HOST,
+#        'PORT': DEV_PORT,
+#        #'TEST': {
+#        #    'NAME': TEST_DATABASE,
+#        #},
+#    },
 #}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'athnzocb', #'jairoalonso',
+        'USER': 'athnzocb', #'jairoalonso',
+        'PASSWORD': 'KVv4WN4TbOKVJUXwC5BNA3CqyTsGnxwX', #'1234',
+        'HOST': 'heffalump.db.elephantsql.com', #'localhost',
+        'PORT': 5432,
+    }
+}
 
 
 # Password validation
