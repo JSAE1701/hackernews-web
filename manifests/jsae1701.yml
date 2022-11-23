@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: JSAE1701
+  name: jsae1701
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: JSAE1701
+      app: jsae1701
   template:
     metadata:
       labels:
-        app: JSAE1701
+        app: jsae1701
     spec:
       containers:
       - image: okteto.dev/jsae1701:latest
-        name: JSAE1701
+        name: jsae1701
         envFrom:
         - configMapRef:
             name: jsae1701-config
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: ClusterIP  
   ports:
-  - name: "JSAE1701"
+  - name: "jsae1701"
     port: 8080
   selector:
-    app: JSAE1701
+    app: jsae1701
